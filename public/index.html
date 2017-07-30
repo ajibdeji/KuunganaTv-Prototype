@@ -50,17 +50,17 @@
 
         <div class="jumbotron">
             <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="media/1.mp4"></iframe>
+                <iframe class="embed-responsive-item" src="http://localhost:4000/business" id="video-broadcast"></iframe>
                 <!-- <img src="/server/3.jpeg"> -->
             </div>
         </div>
 
-        <div class="list-group">
-            <a href="#" class="list-group-item active"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Business</a>
-            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Politics</a>
-            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Sport</a>
-            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Music</a>
-            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Science</a>
+        <div class="list-group" id="channel-list">
+            <a href="#" class="list-group-item active" id="channel-business" data-channel="business"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Business</a>
+            <a href="#" class="list-group-item" id="channel-politics" data-channel="politics"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Politics</a>
+            <a href="#" class="list-group-item" id="channel-sports" data-channel="sports"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Sports</a>
+            <a href="#" class="list-group-item" id="channel-music" data-channel="music"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Music</a>
+            <a href="#" class="list-group-item" id="channel-science" data-channel="science"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Science</a>
         </div>
 
     </div>
@@ -76,6 +76,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 </body>

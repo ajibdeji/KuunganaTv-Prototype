@@ -19,6 +19,8 @@
   "dependencies": {
     "express": "^4.15.3",
     "hbs": "^4.0.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^2.0.3",
+    "socket.io-stream": "^0.9.1"
   }
 }
