@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- ideally this should be in <head>
+<script src="//cdn.viblast.com/vb/stable/viblast.js"></script>
+ -->  
+<script src="viblast.js"></script>
+</head>
+<body>
+
+<style>
+video {
+  display: block;
+}
+</style>
+
+
+<video id="my-cool-video-tag" controls width="800"></video>
+<button onclick="start_viblast();">Start</button>
+<button onclick="stop_viblast();">Stop</button>
+<button onclick="changesrc_viblast();">Change Stream</button>
+<script>
+var stream2="//cdn3.viblast.com/streams/dash/vod-bunny/SNE_DASH_CASE3B_SD_REVISED.mpd";
+var stream1="http://vm2.dashif.org/livesim-dev/periods_1/testpic_2s/Manifest.mpd";
+
+
+//var stream2="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8";
+var current_stream = stream1;
+function start_viblast() {
+    viblast('#my-cool-video-tag').setup({
+        key: 'N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=',
+        stream: current_stream,
+        autoplay: true
+    });
+}
+
+function stop_viblast() {
+    viblast('#my-cool-video-tag').stop();
+}
+
+function changesrc_viblast() {
+    viblast('#my-cool-video-tag').stop(); // ensure that Viblast Player is stopped
+    if (current_stream === stream1) {
+	current_stream = stream2;
+    } else {
+	current_stream = stream1;
+    }
+    start_viblast();
+}
+
+</script>
+</body>
+
+</html>
