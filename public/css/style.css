@@ -1,8 +1,53 @@
 body {
+    background-image: url("../images/background1.jpg"); 
     padding-top: 5rem;
 }
 
-.starter-template {
-    padding: 3rem 1.5rem;
-    text-align: center;
+.float-left {
+    float:left;
+}
+.player{
+    margin-top:10px;
+    padding:0;
+    width:88%;
+   
+}
+
+#channel-list {
+    margin-top:10px;
+}
+.social-icons{
+    margin: 10px 0 10px -10px;
+    display:inline-block;
+    width: 10%;
+    padding: 0 5px 0 0;
+}
+.social-icons  img {
+width:40px;
+height:40px;
+}
+.social-icons  li {
+list-style: none;
+
+padding : 0px 5px 0px 0px;
+}
+.social-icons  span {
+color:white;
+}
+
+.social-icons .logo {
+    width:50px;
+    height:50px;
+    margin-bottom: 20px;
+}
+/* Responsive Changes */
+
+@media only screen and (max-width: 768px) {
+  
+.social-icons {
+    display: none;
+}
+.player{
+    width:100%;
+}
 }
