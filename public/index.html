@@ -15,14 +15,14 @@
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
-	
-	
-     <!-- Player Script -->  
-     
+
+
+    <!-- Player Script -->
+
     <script src="players/viblast/viblast.js"></script>
 </head>
 
-<body>
+<body ng-app="mainApp">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -33,8 +33,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                    
-           <a class="navbar-brand" href="#">  Kuungana Tv</a>
+
+                <a class="navbar-brand" href="#">  Kuungana Tv</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -49,33 +49,32 @@
 
     <div class="container">
 
-       
+
         <div class="container-fluid ">
-            
+
             <div class="col-xs-12 col-md-9 col-lg-9">
-                 <ul class ="social-icons float-left">
-                        <li><img  class ="logo" src="images/logo.png" /> </li>
-                         <li><span>Share</span></li>
-                        <li><img src="images/facebook.png" /></li>
-                        <li><img src="images/google.png" /></li>
-                        <li><img src="images/twitter.png" /></li>
-                    </ul>
-                
+                <ul class="social-icons float-left">
+                    <li><img class="logo" src="images/logo.png" /> </li>
+                    <li><span>Share</span></li>
+                    <li><img src="images/facebook.png" /></li>
+                    <li><img src="images/google.png" /></li>
+                    <li><img src="images/twitter.png" /></li>
+                </ul>
+
                 <div class="player float-left">
-                   
-					<video id="vib-player"  data-viblast-key="N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=" 
-					autoplay src="//cdn3.viblast.com/streams/dash/vod-bunny/SNE_DASH_CASE3B_SD_REVISED.mpd" controls width="100%"></video>
-					<!-- <div class="controls">
+
+                    <video id="vib-player" data-viblast-key="N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=" autoplay src="//cdn3.viblast.com/streams/dash/vod-bunny/SNE_DASH_CASE3B_SD_REVISED.mpd" controls width="100%"></video>
+                    <!-- <div class="controls">
 					<button onclick="start_viblast();">Start</button>
 					<button onclick="stop_viblast();">Stop</button>
 					<button onclick="changesrc_viblast();">Change Stream</button>
 				   
-                </div> --> 
-                
-            </div>
-                
-                   
-                
+                </div> -->
+
+                </div>
+
+
+
             </div>
             <div class="col-xs-12 col-md-3 col-lg-3">
                 <div class="list-group" id="channel-list">
@@ -109,52 +108,52 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
-	
-	<!--Player Script  -->
 
-<script>
-var stream1="//cdn3.viblast.com/streams/dash/vod-bunny/SNE_DASH_CASE3B_SD_REVISED.mpd";
-var stream2="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8";
-var stream3="https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
-var stream4="http://www.streambox.fr/playlists/test_001/stream.m3u8";
-var stream5="../vids/animals/animalstest2/animalstest2.mpd";
+    <!--Player Script  -->
 
-var current_stream = stream1;
-function start_viblast() {
-    viblast('#vib-player').setup({
-        key: 'N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=',
-        stream: current_stream,
-        autoplay: true
-    });
-}
+    <script>
+        var stream1 = "//cdn3.viblast.com/streams/dash/vod-bunny/SNE_DASH_CASE3B_SD_REVISED.mpd";
+        var stream2 = "//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8";
+        var stream3 = "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
+        var stream4 = "http://www.streambox.fr/playlists/test_001/stream.m3u8";
+        var stream5 = "../vids/animals/animalstest2/animalstest2.mpd";
 
-function stop_viblast() {
-    viblast('#vib-player').stop();
-}
+        var current_stream = stream1;
 
-function changesrc_viblast() {
-    viblast('#vib-player').stop(); // ensure that Viblast Player is stopped
-    if (current_stream === stream1) {
-	current_stream = stream2;
-    } else {
-	current_stream = stream1;
-    }
-    start_viblast();
-}
-// Load Channel -bb
-function load_channel(stream) {
-    viblast('#vib-player').stop(); // ensure that Viblast Player is stopped
-    current_stream = stream;
-   
-    start_viblast();
-}
+        function start_viblast() {
+            viblast('#vib-player').setup({
+                key: 'N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=',
+                stream: current_stream,
+                autoplay: true
+            });
+        }
+
+        function stop_viblast() {
+            viblast('#vib-player').stop();
+        }
+
+        function changesrc_viblast() {
+            viblast('#vib-player').stop(); // ensure that Viblast Player is stopped
+            if (current_stream === stream1) {
+                current_stream = stream2;
+            } else {
+                current_stream = stream1;
+            }
+            start_viblast();
+        }
+        // Load Channel -bb
+        function load_channel(stream) {
+            viblast('#vib-player').stop(); // ensure that Viblast Player is stopped
+            current_stream = stream;
+
+            start_viblast();
+        }
+    </script>
 
 
-
-</script>
-
-	
-	
-	</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    <script src="js/angular/app.js"></script>
+</body>
 
 </html>
