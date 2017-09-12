@@ -3,18 +3,34 @@ body {
     padding-top: 5rem;
 }
 
+#container-content {
+    width: 800px;
+    background-color: white;
+}
+
 .float-left {
     float: left;
+}
+
+#channel-list>.active {
+    background-color: red;
+}
+
+#channel-list>a {
+    background-color: dimgray;
+    height: 33px;
+    color: #fff;
+    border-radius: 0;
+}
+
+#channel-list>.list-group-item {
+    border: 1px 0 0 1px;
 }
 
 .player {
     margin-top: 10px;
     padding: 0;
-    width: 88%;
-}
-
-#channel-list {
-    margin-top: 10px;
+    width: 100%;
 }
 
 .social-icons {

@@ -1,26 +1,28 @@
 {
-  "name": "kuunganatvprototype",
-  "version": "1.0.0",
-  "description": "prototype for KungaanaTv",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ajibdeji/KuunganaTv-Prototype.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ajibdeji/KuunganaTv-Prototype/issues"
-  },
-  "homepage": "https://github.com/ajibdeji/KuunganaTv-Prototype#readme",
-  "dependencies": {
-    "express": "^4.15.3",
-    "hbs": "^4.0.1",
-    "path": "^0.12.7",
-    "socket.io": "^2.0.3",
-    "socket.io-stream": "^0.9.1"
-  }
+    "name": "kuunganatvprototype",
+    "version": "1.0.0",
+    "description": "prototype for KungaanaTv",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ajibdeji/KuunganaTv-Prototype.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ajibdeji/KuunganaTv-Prototype/issues"
+    },
+    "homepage": "https://github.com/ajibdeji/KuunganaTv-Prototype#readme",
+    "dependencies": {
+        "express": "^4.15.3",
+        "hbs": "^4.0.1",
+        "path": "^0.12.7",
+        "socket.io": "^2.0.3",
+        "socket.io-stream": "^0.9.1",
+        "twit": "^2.2.9"
+    }
 }

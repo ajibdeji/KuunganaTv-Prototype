@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>Kuungana Tv</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- Player Script -->
+
+    <script src="players/viblast/viblast.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+                <a class="navbar-brand" href="#">  Kuungana Tv</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+
+        <div class="container-fluid ">
+
+            <div class="col-xs-12 col-md-9 col-lg-9">
+                <ul class="social-icons float-left">
+                    <li><img class="logo" src="images/logo.png" /> </li>
+                    <li><span>Share</span></li>
+                    <li><img src="images/facebook.png" /></li>
+                    <li><img src="images/google.png" /></li>
+                    <li><img src="images/twitter.png" /></li>
+                </ul>
+
+                <div class="player float-left">
+
+                    <div class="jsmpeg" data-url="rtsp://localhost:5000/stream"></div>
+                    <!-- <div class="controls">
+					<button onclick="start_viblast();">Start</button>
+					<button onclick="stop_viblast();">Stop</button>
+					<button onclick="changesrc_viblast();">Change Stream</button>
+				   
+                </div> -->
+
+                </div>
+
+
+
+            </div>
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <div class="list-group" id="channel-list">
+                    <a href="#" class="list-group-item active" id="channel-business" data-channel="business" onclick="load_channel(stream1)"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Business</a>
+                    <a href="#" class="list-group-item" id="channel-politics" data-channel="politics" onclick="load_channel(stream2)"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Politics</a>
+                    <a href="#" class="list-group-item" id="channel-sports" data-channel="sports" onclick="load_channel(stream3)"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Sports</a>
+                    <a href="#" class="list-group-item" id="channel-music" data-channel="music" onclick="load_channel(stream4)"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Music</a>
+                    <a href="#" class="list-group-item" id="channel-science" data-channel="science" onclick="load_channel(stream5)"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Science</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+
+
+    <!--Player Script  -->
+
+    <script>
+        var stream1 = "//cdn3.viblast.com/streams/dash/vod-bunny/SNE_DASH_CASE3B_SD_REVISED.mpd";
+        var stream2 = "//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8";
+        var stream3 = "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
+        var stream4 = "http://www.streambox.fr/playlists/test_001/stream.m3u8";
+        var stream5 = "../vids/animals/animalstest2/animalstest2.mpd";
+
+        var current_stream = stream1;
+
+        function start_viblast() {
+            viblast('#vib-player').setup({
+                key: 'N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=',
+                stream: current_stream,
+                autoplay: true
+            });
+        }
+
+        function stop_viblast() {
+            viblast('#vib-player').stop();
+        }
+
+        function changesrc_viblast() {
+            viblast('#vib-player').stop(); // ensure that Viblast Player is stopped
+            if (current_stream === stream1) {
+                current_stream = stream2;
+            } else {
+                current_stream = stream1;
+            }
+            start_viblast();
+        }
+        // Load Channel -bb
+        function load_channel(stream) {
+            viblast('#vib-player').stop(); // ensure that Viblast Player is stopped
+            current_stream = stream;
+
+            start_viblast();
+        }
+    </script>
+
+    <script src="js/jsmpeg.min.js"></script>
+
+</body>
+
+</html>
