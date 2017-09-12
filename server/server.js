@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const publicPath = path.join(__dirname, '../public');
 
+const port = process.env.PORT || 4000;
+
 var app = express();
 
 app.set('view engine', 'hbs');
@@ -21,6 +23,6 @@ app.get('/politics', (req, res) => {
     var stream = fs.createReadStream(__dirname + '/media/R.mp4');
     stream.pipe(res);
 });
-app.listen(4000, () => {
+app.listen(port, () => {
     console.log(`server is up on port 4000`);
 });
