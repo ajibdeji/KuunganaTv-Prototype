@@ -1,9 +1,15 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+
 const publicPath = path.join(__dirname, '../public');
 const adminPath = path.join(__dirname, '../public/admin');
 const port = process.env.PORT || 4000;
+
+var { mongoose } = require('./db/mongoose');
+var { Channel } = require('./models/mongoose');
+var { Mediafile } = require('./models/mongoose');
 
 var app = express();
 
