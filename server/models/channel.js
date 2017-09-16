@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Channel = mongoose.model('Todo', {
+var Channel = mongoose.model('Channel', {
     name: {
         type: String,
         required: true,

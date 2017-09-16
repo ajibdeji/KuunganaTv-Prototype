@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var MediaFile = mongoose.model('Todo', {
+var Mediafile = mongoose.model('Mediafile', {
     name: {
         type: String,
         required: true,
@@ -14,4 +14,4 @@ var MediaFile = mongoose.model('Todo', {
     }
 });
 
-module.exports = { MediaFile };
+module.exports = { Mediafile };
