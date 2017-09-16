@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    app.sendFile(adminPath + '/index.html');
+    res.sendFile(adminPath + '/index.html');
 });
 
 app.get('/business', (req, res) => {
