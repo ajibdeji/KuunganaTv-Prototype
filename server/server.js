@@ -22,6 +22,26 @@ app.get('/', (req, res) => {
 
 });
 
+// Form Upload 
+
+app.get('/formupload', (req, res) => {
+    res.sendFile(adminPath + '/test.html');
+});
+app.post('/fileupload', (req, res) => {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      var oldpath = files.filetoupload.path;
+      var newpath = 'C:/xampp/htdocs/KuunganaTv-Prototype/public/media/' + files.filetoupload.name;
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        res.write('File uploaded and moved!');
+        res.end();
+      });
+ });
+});
+
+// Api 
+
 app.get('/admin', (req, res) => {
     res.sendFile(adminPath + '/index.html');
 });
