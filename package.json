@@ -21,8 +21,11 @@
     },
     "homepage": "https://github.com/ajibdeji/KuunganaTv-Prototype#readme",
     "dependencies": {
+        "body-parser": "^1.18.1",
         "express": "^4.15.3",
         "hbs": "^4.0.1",
+        "mongodb": "^2.2.31",
+        "mongoose": "^4.11.11",
         "path": "^0.12.7",
         "socket.io": "^2.0.3",
         "socket.io-stream": "^0.9.1",
