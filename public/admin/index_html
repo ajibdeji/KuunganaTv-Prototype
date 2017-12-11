@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>Admin</title>
+</head>
+
+<body ng-app="mainApp">
+    <h1>Admin</h1>
+    <div ng-controller="channel-controller">
+        <form action="">
+            <label for="name">Name</label><input type="text" ng-model="name" id="name"><br/><br/>
+            <label for="description">description</label><textarea cols="30" rows="10" ng-model="description" id="description"></textarea><br/><br/>
+            <input type="button" value="Submit" ng-click="postChannel()">
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="../js/angular/app.js"></script>
+    <script src="js/angular/controllers/channel-controller.js"></script>
+</body>
+
+</html>
