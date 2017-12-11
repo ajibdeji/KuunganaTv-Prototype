@@ -6,8 +6,10 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
 
+
 const publicPath = path.join(__dirname, '../public');
 const adminPath = path.join(__dirname, '../public/admin');
+const serverPath = path.join(__dirname,'/');
 const port = process.env.PORT || 4000;
 
 var { mongoose } = require('./db/mongoose');
@@ -15,11 +17,24 @@ var { Channel } = require('./models/channel');
 var { Mediafile } = require('./models/mediafile');
 var {ObjectID}=require('mongodb');
 
-var app = express();
+var multer=require('multer');
+var formidable = require('formidable');
+const Mime = require('mime');
 
+var app = express();
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'server/media')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now()+ '.' + Mime.getExtension(file.mimetype))
+    }
+  });
+  var upload = multer({ storage: storage });
 app.set('view engine', 'hbs');
 
-app.use(express.static(publicPath));
+app.use("/",express.static(publicPath));
+app.use("/server", express.static(serverPath));
 app.use(bodyParser.json());
 
 // Add headers
@@ -47,22 +62,52 @@ app.get('/', (req, res) => {
 
 // Form Upload 
 
-app.get('/formupload', (req, res) => {
-    res.sendFile(adminPath + '/test.html');
-});
-app.post('/fileupload', (req, res) => {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      var oldpath = files.filetoupload.path;
-      var newpath = 'C:/xampp/htdocs/KuunganaTv-Prototype/public/media/' + files.filetoupload.name;
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-        res.write('File uploaded and moved!');
-        res.end();
-      });
- });
-});
-
+// app.get('/formupload', (req, res) => {
+//     res.sendFile(adminPath + '/test.html');
+// });
+// app.post('/fileupload', (req, res) => {
+//     var form = new formidable.IncomingForm();
+//     form.parse(req, function (err, fields, files) {
+//         console.log(req.body);
+//       var oldpath = files.file.path;
+//       var newpath = 'server/media' + files.file.name;
+//       fs.rename(oldpath, newpath, function (err) {
+//           console.log("in rename");
+//         if (err) throw err;
+//         res.write('File uploaded and moved!');
+//         res.end();
+//       });
+//  });
+// });
+app.post( '/upload', upload.single( 'file' ), function( req, res, next ) {
+    
+    //   if ( !req.file.mimetype.startsWith( 'image/' ) ) {
+    //     return res.status( 422 ).json( {
+    //       error : 'The uploaded file must be an image'
+    //     } );
+    //   }
+    
+    //   var dimensions = sizeOf( req.file.path );
+    
+    //   if ( ( dimensions.width < 640 ) || ( dimensions.height < 480 ) ) {
+    //     return res.status( 422 ).json( {
+    //       error : 'The image must be at least 640 x 480px'
+    //     } );
+    //   }
+    var mediafile = new Mediafile({
+        name: req.file.originalname.split(".")[0],
+        file:req.file.filename,
+        type:req.file.mimetype
+    });
+    mediafile.save().then((doc) => {
+        console.log(doc,req.file);
+    }, (e) => {
+        console.log(e);
+    });
+    console.log(req.file)
+      return res.status( 200 ).send( req.file );
+    });
+    
 // Api 
 
 app.get('/admin', (req, res) => {

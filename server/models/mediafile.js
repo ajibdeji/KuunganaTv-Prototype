@@ -5,7 +5,7 @@ var Mediafile = mongoose.model('Mediafile', {
         required: true,
         trim: true
     },
-    relativePath: {
+    file: {
         type: String,
         required: true
     },

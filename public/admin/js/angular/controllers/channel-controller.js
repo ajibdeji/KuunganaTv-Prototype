@@ -13,6 +13,7 @@ app.controller('channel-controller', function($scope, $http) {
             console.log(response.data);
             $scope.name="";
             $scope.description="";
+            $scope.getChannels();
         }, function(response) {
             console.log(response.statusText);
         });

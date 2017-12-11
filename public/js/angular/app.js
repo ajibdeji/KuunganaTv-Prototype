@@ -1,6 +1,7 @@
 var app=angular.
-module('myApp', ['ngRoute']).
-config(['$locationProvider', '$routeProvider',
+module('myApp', ['ngRoute','thatisuday.dropzone']);
+
+app.config(['$locationProvider', '$routeProvider',
   function config($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
@@ -14,6 +15,17 @@ config(['$locationProvider', '$routeProvider',
       when('/channels', {
         templateUrl: 'partials/channelManagement.html'
       }).
+      when('/media', {
+        templateUrl: 'partials/mediaManagement.html'
+      }).
       otherwise('/');
   }
 ]);
+
+app.config(function(dropzoneOpsProvider){
+	dropzoneOpsProvider.setOptions({
+		url : '/upload',
+    maxFilesize : '10',
+    acceptedFiles:'image/*,video/*'
+	});
+});
