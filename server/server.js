@@ -125,6 +125,58 @@ app.get('/politics', (req, res) => {
     stream.pipe(res);
 });
 
+app.get('/media', (req, res) => {
+    Mediafile.find().then((mediafiles)=>{
+       res.send({mediafiles});
+       console.log(mediafiles);
+    }, (e)=>{
+       res.status(400).send(e); 
+    });
+     console.log(req.body);
+ });
+
+ app.delete('/media', (req, res) => {
+     var id=req.body.id;
+    console.log(id);
+     if (!ObjectID.isValid(id)){
+        return res.status(404).send({message: "Invalid Object Id"});
+    }
+    Mediafile.findByIdAndRemove(id).then((mediafile)=>{
+        if(!mediafile){
+            return res.status(404).send({"statusText":"Media file not found"});
+        }
+        fs.unlink('server/media/'+mediafile.file+'', (err) => {
+            if (err) throw err;
+            console.log('successfully deleted file');
+          });
+       res.send({mediafile});
+       console.log(mediafile);
+    }, (e)=>{
+       res.status(400).send(e); 
+    });
+     console.log(req.body);
+ });
+
+ app.patch('/media', (req, res) => {
+    var id = req.body.id;
+    var body={
+        name:req.body.name
+    };
+
+    if (!ObjectID.isValid(id)){
+        return res.status(404).send({message: "Invalid Object Id"});
+    }
+
+    Mediafile.findByIdAndUpdate(id, {$set:{"name":body.name}}, {new: true}).then((media)=>{
+        if (!media){
+            return res.status(404).send({message: "Media doesn't exist"});
+        }  
+        res.send({media});
+    }).catch((e)=>{
+        res.status(400).send({ message: "Error Occured",e}); 
+    });
+});
+
 app.post('/channels', (req, res) => {
     var channel = new Channel({
         name: req.body.name,

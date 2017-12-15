@@ -1,6 +1,6 @@
 <h1>Media Management</h1>
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+<div class="row"  ng-controller="media-controller">
+    <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
           <h2>Upload Media Files</h2>
@@ -25,11 +25,57 @@
         <div class="x_content">
           <p>Drag Files Here to upload Media</p>
           <ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
-          <br />
-          <br />
-          <br />
-          <br />
+          
         </div>
       </div>
     </div>
+    <div class="col-md-8 col-sm-8 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Media Files</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        
+        <div class="x_content">
+          <div ng-init="getMedia()">
+              <ul class="list-unstyled msg_list">
+                  <li ng-repeat="media in allMedia ">
+                      <span class="image">
+                        <img src="/server/media/{{media.file}}" alt="img" class="img img-thumbnail rounded" height="100" width="100"/>
+                      </span>
+                      <span>
+                    <a  href="/server/media/{{media.file}}">                      
+                      <span>{{media.name}}</span>
+                    </a>
+                    
+                        <span class="btn btn-danger btn-xs" ng-click="removeMedia(media._id)">Delete</span>
+                        <span class="btn btn-default btn-xs" ng-click="showModal(media)">Edit</span>   
+                  </span>
+                  </li>
+                </ul>
+            <!-- <li ng-repeat="media in allMedia ">
+              <a href="/server/media/{{media.file}}">{{media.name}}</a><br/>
+              <a ng-click="removeMedia(media.id)" class="small invisible" >Delete</a>
+            </li> -->
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div ng-include="'partials/partial1.html'"></div>    
   </div>

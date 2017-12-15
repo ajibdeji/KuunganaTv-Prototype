@@ -1,5 +1,5 @@
 var app=angular.
-module('myApp', ['ngRoute','thatisuday.dropzone']);
+module('myApp', ['ngRoute','thatisuday.dropzone','ui.bootstrap']);
 
 app.config(['$locationProvider', '$routeProvider',
   function config($locationProvider, $routeProvider) {

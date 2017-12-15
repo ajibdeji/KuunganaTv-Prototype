@@ -1,0 +1,32 @@
+
+<div class="modal fade" id="partial1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">Add Customer</h4>
+        </div>
+        <div class="modal-body clearfix"> 
+  
+        <div class="col-xs-6">
+              <div class="form-group required">
+              <label>Name *</label>
+                <input type="text" class="form-control" placeholder="Name" ng-model="selectedMedia.name" id="media_name">
+              </div>
+              </div>
+  
+          <!-- <div class="col-xs-6">
+              <div class="form-group required">
+              <label>Choose File</label>
+              <input type="file" class="form-control" accept="image/*, video/*" />
+              </div>
+          </div>  -->
+        </div>
+  
+        <div class="modal-footer">
+              <button class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+              <a class="btn btn-primary btn-sm" href="javascript: void(-1);" data-dismiss="modal" data-ng-click="updateMedia(selectedMedia);">Update</a> 
+      </div>
+      </div>
+    </div>
+  </div>
