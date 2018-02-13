@@ -2,7 +2,7 @@ app.controller('media-controller', function($scope, $http) {
     $scope.getMedia = function() {
         $http({
             method: "GET",
-            url: "http://localhost:4000/media",
+            url: "http://localhost:4000/api/media",
             data: {}
         }).then(function(response) {
             $scope.allMedia=response.data.mediafiles;
@@ -16,7 +16,7 @@ app.controller('media-controller', function($scope, $http) {
     $scope.removeMedia = function(id){
         $http({
             method: "DELETE",
-            url: "http://localhost:4000/media",
+            url: "http://localhost:4000/api/media",
             data: {
                 id:id
             },
@@ -40,7 +40,7 @@ app.controller('media-controller', function($scope, $http) {
     $scope.updateMedia=function(media){
         $http({
             method: "PATCH",
-            url: "http://localhost:4000/media",
+            url: "http://localhost:4000/api/media",
             data: {
                 id:media._id,
                 name:media.name

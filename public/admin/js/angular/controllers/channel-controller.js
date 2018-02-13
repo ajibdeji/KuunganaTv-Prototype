@@ -4,7 +4,7 @@ app.controller('channel-controller', function($scope, $http) {
     $scope.postChannel = function() {
         $http({
             method: "POST",
-            url: "http://localhost:4000/channels",
+            url: "http://localhost:4000/api/channels",
             data: {
                 name: $scope.name,
                 description: $scope.description
@@ -21,7 +21,7 @@ app.controller('channel-controller', function($scope, $http) {
     $scope.getChannels = function() {
         $http({
             method: "GET",
-            url: "http://localhost:4000/channels",
+            url: "http://localhost:4000/api/channels",
             data: {}
         }).then(function(response) {
             $scope.allChannels=response.data.channels;
